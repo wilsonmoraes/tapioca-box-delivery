@@ -2,7 +2,7 @@ from tapioca import JSONAdapterMixin, TapiocaAdapter, generate_wrapper_from_adap
 from .resource_mapping import RESOURCE_MAPPING
 
 
-class BoxDeliveryClient(JSONAdapterMixin, TapiocaAdapter):
+class BoxDeliveryClientAdapter(JSONAdapterMixin, TapiocaAdapter):
     production_url = "https://api.boxdelivery.com.br/v2/"
     sandbox_url = "https://dev.api.boxdelivery.com.br/v2/"
     access_token = None
@@ -26,3 +26,6 @@ class BoxDeliveryClient(JSONAdapterMixin, TapiocaAdapter):
         if api_params.get("sandbox"):
             url = self.sandbox_url
         return url
+
+
+BoxDeliveryClient = generate_wrapper_from_adapter(BoxDeliveryClientAdapter)
