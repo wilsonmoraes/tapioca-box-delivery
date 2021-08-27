@@ -6,7 +6,6 @@ repos:
     - id: trailing-whitespace
       args: [--markdown-linebreak-ext=md]
     - id: check-merge-conflict
-    - id: check-executables-have-shebangs
     - id: check-ast
     - id: check-byte-order-marker
     - id: check-json
@@ -18,7 +17,7 @@ repos:
       args: ['--allow-missing-credentials']
     - id: detect-private-key
     - id: forbid-new-submodules
-    - id: no-commit-to-branch
+    #- id: no-commit-to-branch
     - id: end-of-file-fixer
 
 - repo: local

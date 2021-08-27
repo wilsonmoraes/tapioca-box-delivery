@@ -1,4 +1,5 @@
 from tapioca import JSONAdapterMixin, TapiocaAdapter, generate_wrapper_from_adapter
+
 from .resource_mapping import RESOURCE_MAPPING
 
 
@@ -28,4 +29,4 @@ class BoxDeliveryClientAdapter(JSONAdapterMixin, TapiocaAdapter):
         return url
 
 
-BoxDeliveryClient = generate_wrapper_from_adapter(BoxDeliveryClientAdapter)
+BoxDelivery = generate_wrapper_from_adapter(BoxDeliveryClientAdapter)
