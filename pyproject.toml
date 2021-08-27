@@ -19,7 +19,7 @@ default_section = "THIRDPARTY"
 
 [tool.poetry]
 name = "tapioca_box_delivery"
-version = "0.1.0"
+version = "1.0.0"
 description = "tapioca box delivery client"
 authors = ["Developers <wilsontads@gmail.com>"]
 repository = "tapioca-box-delivery"
@@ -35,9 +35,8 @@ exclude = [ "docs", "tests*"]
 include = ["*.rst", "*.txt", "*.py", "*.png", "*.dot", "Makefile"]
 
 [[tool.poetry.source]]
-name = "yaeeh"
-url = "https://api.packagr.app/public"
-secondary=true
+name = "fury"
+url = "https://1rSTPY-qDFbggOUEkyAQzZSRpR9Hzt1R7Q:@pypi.fury.io/wilsonmoraes/"
 
 [tool.poetry.dependencies]
 python = "^3.9"
@@ -53,3 +52,4 @@ pytest-randomly = "*"
 pytest-deadfixtures = "*"
 ipython = "*"
 safety = "*"
+docproduct="*"
