@@ -18,7 +18,7 @@ clean-build:
 test:
 	poetry run pytest -vvv
 
-build:
+build: test
 	poetry build
 	poetry run twine upload --repository gemfury dist/* --verbose
 
