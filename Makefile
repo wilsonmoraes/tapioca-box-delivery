@@ -14,14 +14,13 @@ clean-build:
 	@rm -fr dist/
 	@rm -fr *.egg-info
 
-deps:
-	poetry install
 
-test: deps
+test:
 	poetry run pytest -vvv
 
-build: test
-	poetry publish -r packagr --build
+build:
+	poetry build
+	poetry run twine upload --repository gemfury dist/* --verbose
 
 version = `cat CHANGES.rst | awk '/^[0-9]+\.[0-9]+(\.[0-9]+)?/' | head -n1`
 

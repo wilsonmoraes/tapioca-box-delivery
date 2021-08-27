@@ -33,23 +33,3 @@ classifiers = [
 ]
 exclude = [ "docs", "tests*"]
 include = ["*.rst", "*.txt", "*.py", "*.png", "*.dot", "Makefile"]
-
-[[tool.poetry.source]]
-name = "fury"
-url = "https://1rSTPY-qDFbggOUEkyAQzZSRpR9Hzt1R7Q:@pypi.fury.io/wilsonmoraes/"
-
-[tool.poetry.dependencies]
-python = "^3.9"
-tapioca-wrapper = ">=2.0.1"
-
-
-[tool.poetry.dev-dependencies]
-coverage = "*"
-pre-commit = "*"
-pytest = "*"
-pytest-cov = "*"
-pytest-randomly = "*"
-pytest-deadfixtures = "*"
-ipython = "*"
-safety = "*"
-docproduct="*"
