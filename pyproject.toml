@@ -19,7 +19,7 @@ default_section = "THIRDPARTY"
 
 [tool.poetry]
 name = "tapioca_box_delivery"
-version = "1.0.1"
+version = "1.0.3"
 description = "tapioca box delivery client"
 authors = ["Developers <wilsontads@gmail.com>"]
 repository = "tapioca-box-delivery"
