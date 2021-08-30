@@ -18,6 +18,9 @@ class BoxDeliveryClientAdapter(JSONAdapterMixin, TapiocaAdapter):
     def get_request_kwargs(self, api_params, *args, **kwargs):
         if not self.access_token:
             self.refresh_authentication(api_params, args, kwargs)
+        if "headers" not in api_params:
+            api_params["headers"] = {}
+        api_params["headers"]["Content-Type"] = "application/json"
         api_params["headers"]["authorization"] = self.access_token
         params = super().get_request_kwargs(api_params, *args, **kwargs)
         return params

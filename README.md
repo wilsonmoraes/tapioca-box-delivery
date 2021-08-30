@@ -15,7 +15,11 @@ from tapioca_box_delivery import BoxDeliveryClient
 
 
 api = BoxDeliveryClient(sandbox=True,access_token='000000-000000-000000-000000')
-response = api.calculate_value().get({"destination_lat": -16.731470, "destination_lng":-49.283660})
+
+response = box_delivery_client.calculate_value(
+            vehicle_type=4, destination_lat="-16.731470", destination_lng="-49.283660"
+        ).get()
+
 onboarding_data = response().data
 
 ```
