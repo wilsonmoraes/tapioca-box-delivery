@@ -36,3 +36,14 @@ def test_calculate_value(box_delivery_url, box_delivery_client, calculate_value_
     assert isinstance(response_data, dict)
     assert isinstance(response_data["withReturn"], dict)
     assert isinstance(response_data["withoutReturn"], dict)
+
+
+@responses.activate
+def test_create_order(box_delivery_url, box_delivery_client):
+    endpoint = f"{box_delivery_url}orders"
+    responses.add(responses.POST, endpoint, status=200, json={"data": {"id": "12345"}})
+    response = box_delivery_client.create_order().post({})
+    response_data = response().data
+    assert isinstance(response_data, dict)
+    assert isinstance(response_data["data"], dict)
+    assert isinstance(response_data["data"]["id"], str)
