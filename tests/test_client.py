@@ -47,3 +47,11 @@ def test_create_order(box_delivery_url, box_delivery_client):
     assert isinstance(response_data, dict)
     assert isinstance(response_data["data"], dict)
     assert isinstance(response_data["data"]["id"], str)
+
+
+@responses.activate
+def test_cancel_order(box_delivery_url, box_delivery_client):
+    endpoint = f"{box_delivery_url}orders/1/cancel"
+    responses.add(responses.PUT, endpoint, status=200)
+    response = box_delivery_client.cancel_order(id=1).put()
+    assert response().status_code == 200

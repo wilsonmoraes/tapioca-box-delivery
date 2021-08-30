@@ -12,17 +12,17 @@ RESOURCE_MAPPING = {
         "methods": ["POST"],
     },
     "cancel_order": {
-        "resource": "orders/:id/cancel",
+        "resource": "orders/{id}/cancel",
         "docs": "https://dev.api.boxdelivery.com.br/doc/index.html#api-Order-PutOrdersIdCancel",
         "methods": ["PUT"],
     },
     "detail_order": {
-        "resource": "orders/:id",
+        "resource": "orders/{id}",
         "docs": "https://dev.api.boxdelivery.com.br/doc/index.html#api-Order-GetOrdersId",
         "methods": ["GET"],
     },
     "end_order": {
-        "resource": "orders/:id/finish",
+        "resource": "orders/{id}/finish",
         "docs": "https://dev.api.boxdelivery.com.br/doc/index.html#api-Order-PutOrdersIdFinish",
         "methods": ["PUT"],
     },
