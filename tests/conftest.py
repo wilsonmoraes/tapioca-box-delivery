@@ -50,3 +50,43 @@ def payload_create_order(unique_id):
         },
         "multiple": [],
     }
+
+
+@pytest.fixture
+def calculate_value_response():
+    return {
+        "withReturn": {
+            "id": 6,
+            "destination_table_id": 1,
+            "range_start": 3000,
+            "range_end": 4499,
+            "minimum_value": 6.5,
+            "suggested_value": 6.5,
+            "type": 0,
+            "vehicle_type": 1,
+            "back": 1,
+            "created_at": "2016-11-09 11:11:11",
+            "updated_at": "2018-01-02 11:17:50",
+            "deleted_at": None,
+            "city": None,
+            "uf": None,
+            "tax": 1.5,
+        },
+        "withoutReturn": {
+            "id": 5,
+            "destination_table_id": 1,
+            "range_start": 3000,
+            "range_end": 4499,
+            "minimum_value": 6.5,
+            "suggested_value": 6.5,
+            "type": 0,
+            "vehicle_type": 1,
+            "back": 0,
+            "created_at": "2016-11-09 11:11:11",
+            "updated_at": "2018-01-02 11:17:39",
+            "deleted_at": None,
+            "city": None,
+            "uf": None,
+            "tax": 1.5,
+        },
+    }
