@@ -1,3 +1,5 @@
+import uuid
+
 import pytest
 import responses
 from tapioca.exceptions import ClientError, ServerError
@@ -52,6 +54,32 @@ def test_create_order(box_delivery_url, box_delivery_client):
 @responses.activate
 def test_cancel_order(box_delivery_url, box_delivery_client):
     endpoint = f"{box_delivery_url}orders/1/cancel"
-    responses.add(responses.PUT, endpoint, status=200)
+    responses.add(responses.PUT, endpoint, status=200, json={"id": str(uuid.uuid4())})
     response = box_delivery_client.cancel_order(id=1).put()
+    response_data = response().data
     assert response().status_code == 200
+    assert isinstance(response_data["id"], str)
+
+
+@responses.activate
+def test_try_to_cancel_order_on_delivery(box_delivery_url, box_delivery_client):
+    endpoint = f"{box_delivery_url}orders/1/cancel"
+    responses.add(
+        responses.PUT,
+        endpoint,
+        status=400,
+        json={"delivery-10000": "O pedido já foi aceito por um entregador e não pode ser cancelado"},
+    )
+    with pytest.raises(ClientError) as client_error:
+        box_delivery_client.cancel_order(id=1).put()
+    assert "400" in str(client_error.value)
+    assert "delivery-10000" in client_error.value.client
+
+
+@responses.activate
+def test_try_to_cancel_order_not_found(box_delivery_url, box_delivery_client):
+    endpoint = f"{box_delivery_url}orders/1/cancel"
+    responses.add(responses.PUT, endpoint, status=404, json={"error": "Pedido não encontrado"})
+    with pytest.raises(ClientError) as client_error:
+        box_delivery_client.cancel_order(id=1).put()
+    assert "404" in str(client_error.value)
