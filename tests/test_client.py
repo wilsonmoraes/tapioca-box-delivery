@@ -82,4 +82,4 @@ def test_try_to_cancel_order_not_found(box_delivery_url, box_delivery_client):
     responses.add(responses.PUT, endpoint, status=404, json={"error": "Pedido não encontrado"})
     with pytest.raises(ClientError) as client_error:
         box_delivery_client.cancel_order(id=1).put()
-    assert "404" in str(client_error.value)
+    assert "Pedido não encontrado" in str(client_error.value)
