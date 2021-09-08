@@ -28,9 +28,12 @@ onboarding_data = response().data
 The following resources are available:
 
 |             Endpoint             |           Resource            |
-| :------------------------------: | :---------------------------: |
-|   `/orders/calculate-value/{vehicleType}/{destination_lat}/{destination_lng}`   | `calculate_value()` |
+| :------------------------------ | :--------------------------- |
+|   `/orders/calculate-value/{vehicleType}/{destination_lat}/{destination_lng}`   | `calculate_value(vehicle_type=None, destination_lat=None, destination_lng=None)` |
 |    `/orders`    |  `create_order()`  |
+|    `/orders/{id}/cancel`    |  `cancel_order(id=None)`  |
+|    `/orders/{id}`    |  `detail_order(id=None)`  |
+|    `/orders/{id}`    |  `end_order(id=None)`  |
 
 ---
 
